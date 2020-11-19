@@ -1,0 +1,4 @@
+#本文件用于测试环境单元测试#
+spring:
+  profiles:
+    include: ref-test

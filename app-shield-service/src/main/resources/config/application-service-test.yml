@@ -1,0 +1,30 @@
+spring:
+  mail:
+    host: smtp.exmail.qq.com
+    password: Admin12345
+    username: system@liziczh.com
+    default-encoding: UTF-8
+    smtp:
+      auth: true
+      timeout: 25000
+  kafka:
+    init:
+      create-topics: archetypeTopic
+      partition-num: 2
+      replication-factor: 1
+    producer:
+      bootstrap-servers: 47.93.251.190:9092
+      retries: 0
+      batch-size: 16384
+      buffer-memory: 33554432
+      acks: 1
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      bootstrap-servers: 47.93.251.190:9092
+      group-id: archetypeGroup
+      auto-offset-reset: earliest
+      enable-auto-commit: true
+      auto-commit-interval: 100
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer

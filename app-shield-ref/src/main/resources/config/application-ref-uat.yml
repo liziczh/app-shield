@@ -1,0 +1,5 @@
+health:
+  username: abc
+  password: 123456
+archetype:
+  web: localhost

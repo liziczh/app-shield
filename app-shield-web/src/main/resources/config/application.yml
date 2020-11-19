@@ -1,0 +1,32 @@
+server:
+  servlet:
+    context-path: /app-shield
+spring:
+  application:
+    name: app-shield-web
+  profiles:
+    include: web-${spring.profiles.active},service-${spring.profiles.active},mybatisplus-${spring.profiles.active},ref-${spring.profiles.active},redis-${spring.profiles.active}
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+logging:
+  level:
+    root: info
+  config: classpath:logback-spring.xml
+  file:
+    name: /opt/logs/${spring.application.name}/${spring.application.name}.log
+# SpringBootActuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+info:
+  app:
+    name: '@project.name@'
+    version: '@project.version@'
+    java:
+      version: '@java.version@'
