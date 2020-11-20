@@ -39,7 +39,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.liziczh</groupId>
-			<artifactId>archetype-redis</artifactId>
+			<artifactId>app-shield-redis</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

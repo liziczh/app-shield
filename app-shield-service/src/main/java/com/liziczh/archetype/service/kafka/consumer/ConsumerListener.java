@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ConsumerListener {
-	@KafkaListener(topics = "archetypeTopic")
+	@KafkaListener(topics = "app-shieldTopic")
 	public void process(String msg) {
 		System.out.println(msg);
 	}

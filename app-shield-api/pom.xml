@@ -8,7 +8,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>com.liziczh</groupId>
-	<artifactId>archetype-api</artifactId>
+	<artifactId>app-shield-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<dependencies>
 		<!--base-common-->
