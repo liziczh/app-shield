@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.liziczh.archetype.api.service.AESService;
 import com.liziczh.base.common.controller.BaseController;
-import com.liziczh.base.common.result.Result;
-import com.liziczh.base.common.result.ResultBuilder;
+import com.liziczh.base.common.response.Response;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,14 +21,14 @@ public class AESController extends BaseController {
 
 	@ApiOperation(value = "AES加密", notes = "AES加密")
 	@PostMapping(value = "encrypt")
-	public Result<String> encrypt(String data, String aesKey) {
+	public Response<String> encrypt(String data, String aesKey) {
 		String result = aesService.aesEncrypt(data, aesKey);
-		return new ResultBuilder<String>().complete(result);
+		return new Response<String>().complete(result);
 	}
 	@ApiOperation(value = "AES解密", notes = "AES解密")
 	@PostMapping(value = "decrypt")
-	public Result<String> decrypt(String data, String aesKey) {
+	public Response<String> decrypt(String data, String aesKey) {
 		String result = aesService.aesDecrypt(data, aesKey);
-		return new ResultBuilder<String>().complete(result);
+		return new Response<String>().complete(result);
 	}
 }

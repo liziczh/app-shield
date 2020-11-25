@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.liziczh.archetype.api.service.SignService;
 import com.liziczh.base.common.controller.BaseController;
-import com.liziczh.base.common.result.Result;
-import com.liziczh.base.common.result.ResultBuilder;
+import com.liziczh.base.common.response.Response;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,14 +26,14 @@ public class SignController extends BaseController {
 
 	@ApiOperation(value = "生成数字签名", notes = "生成数字签名")
 	@PostMapping(value = "create")
-	public Result<String> create(Map<String, Object> paramMap, String cipher) {
+	public Response<String> create(Map<String, Object> paramMap, String cipher) {
 		String sign = signService.generateSign(paramMap, cipher);
-		return new ResultBuilder<String>().complete(sign);
+		return new Response<String>().complete(sign);
 	}
 	@ApiOperation(value = "校验数字签名", notes = "校验数字签名")
 	@PostMapping(value = "check")
-	public Result<String> check(Map<String, Object> paramMap, String cipher, String sign) {
+	public Response<String> check(Map<String, Object> paramMap, String cipher, String sign) {
 		Boolean result = signService.checkSign(paramMap, cipher, sign);
-		return new ResultBuilder<String>().complete(String.valueOf(result));
+		return new Response<String>().complete(String.valueOf(result));
 	}
 }
