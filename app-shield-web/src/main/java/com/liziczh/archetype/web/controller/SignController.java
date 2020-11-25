@@ -26,14 +26,14 @@ public class SignController extends BaseController {
 
 	@ApiOperation(value = "生成数字签名", notes = "生成数字签名")
 	@PostMapping(value = "create")
-	public Response<String> create(Map<String, Object> paramMap, String cipher) {
-		String sign = signService.generateSign(paramMap, cipher);
+	public Response<String> create(String from, String appKey, Map<String, Object> paramMap) {
+		String sign = signService.generateSign(from, appKey, paramMap);
 		return new Response<String>().complete(sign);
 	}
 	@ApiOperation(value = "校验数字签名", notes = "校验数字签名")
 	@PostMapping(value = "check")
-	public Response<String> check(Map<String, Object> paramMap, String cipher, String sign) {
-		Boolean result = signService.checkSign(paramMap, cipher, sign);
+	public Response<String> check(String from, String appKey, Map<String, Object> paramMap, String sign) {
+		Boolean result = signService.checkSign(from, appKey, paramMap, sign);
 		return new Response<String>().complete(String.valueOf(result));
 	}
 }

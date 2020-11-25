@@ -11,17 +11,19 @@ import com.liziczh.base.common.service.BaseService;
 public interface SignService extends BaseService {
 	/**
 	 * 生成签名
+	 * @param from 请求来源
+	 * @param appKey AppKey
 	 * @param paramMap 参数Map
-	 * @param cipher 密钥
 	 * @return sign
 	 */
-	String generateSign(Map<String, Object> paramMap, String cipher);
+	String generateSign(String from, String appKey, Map<String, Object> paramMap);
 	/**
 	 * 校验签名
+	 * @param from 请求来源
+	 * @param appKey AppKey
 	 * @param paramMap 参数Map
-	 * @param cipher 密钥
 	 * @param sign 数字签名
 	 * @return 签名校验结果
 	 */
-	Boolean checkSign(Map<String, Object> paramMap, String cipher, String sign);
+	Boolean checkSign(String from, String appKey, Map<String, Object> paramMap, String sign);
 }

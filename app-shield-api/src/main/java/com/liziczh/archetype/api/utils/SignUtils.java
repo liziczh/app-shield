@@ -31,7 +31,6 @@ public class SignUtils {
 	 * @return 签名验证结果
 	 */
 	public static boolean checkSign(Map<String, Object> paramMap, String cipher, String sign) {
-		String from = String.valueOf(paramMap.get("from"));
 		return sign.equals(generateSign(kfilter(paramMap), cipher));
 	}
 	/**
