@@ -1,8 +1,8 @@
 package com.liziczh.app.shield.api.common;
 
 public class Constants {
-	public static final String SYS_CODE = "archetype";
-	public static final String SYS_USER = "archetype";
+	public static final String SYS_CODE = "app-shield";
+	public static final String SYS_USER = "app-shield";
 	/**
 	 * 通用状态
 	 */

@@ -1,11 +1,11 @@
 server:
   servlet:
-    context-path: /archetypemgm
+    context-path: /appshieldmgm
 spring:
   application:
-    name: archetype-mgm
+    name: app-shield-mgm
   profiles:
-    include: mybatisplus-${spring.profiles.active},redis-${spring.profiles.active},ref-${spring.profiles.active},mgm-${spring.profiles.active}
+    include: mybatisplus-${spring.profiles.active},redis-${spring.profiles.active},ref-${spring.profiles.active},internal-${spring.profiles.active},mgm-${spring.profiles.active}
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
