@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liziczh.app.shield.mybatisplus.mapper.TAppInfoMapper">
+    <resultMap id="TAppInfoMap" type="com.liziczh.app.shield.api.entity.TAppInfo">
+        <id column="ID" jdbcType="INTEGER" property="id" />
+        <result column="APP_NAME" property="appName" jdbcType="VARCHAR" />
+        <result column="APP_CODE" property="appCode" jdbcType="VARCHAR" />
+        <result column="APP_KEY" property="appKey" jdbcType="VARCHAR" />
+        <result column="APP_SECRET" property="appSecret" jdbcType="VARCHAR" />
+        <result column="AES_KEY" property="aesKey" jdbcType="VARCHAR" />
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+        <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+        <result column="UPDATE_USER" property="updateUser" jdbcType="VARCHAR" />
+        <result column="PERMIT_ROLE" property="permitRole" jdbcType="VARCHAR" />
+        <result column="VALID" property="valid" jdbcType="VARCHAR" />
+    </resultMap>
+    <!--MybatisRedis缓存-->
+    <cache type="com.liziczh.app.shield.mybatisplus.cache.MybatisRedisCache" />
+</mapper>

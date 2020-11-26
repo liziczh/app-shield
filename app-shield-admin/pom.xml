@@ -25,22 +25,7 @@
 		<!--biz-->
 		<dependency>
 			<groupId>com.liziczh</groupId>
-			<artifactId>app-shield-api</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.liziczh</groupId>
-			<artifactId>app-shield-mybatis-plus</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.liziczh</groupId>
-			<artifactId>app-shield-redis</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.liziczh</groupId>
-			<artifactId>app-shield-ref</artifactId>
+			<artifactId>app-shield-internal</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

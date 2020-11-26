@@ -17,6 +17,7 @@
 		<module>app-shield-redis</module>
 		<module>app-shield-mybatis-plus</module>
 		<module>app-shield-ref</module>
+		<module>app-shield-internal</module>
 		<module>app-shield-service</module>
 		<module>app-shield-web</module>
 		<module>app-shield-admin</module>
