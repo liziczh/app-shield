@@ -3,6 +3,8 @@ package com.liziczh.archetype.service.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.liziczh.archetype.api.entity.TAppInfo;
 import com.liziczh.archetype.api.service.AESService;
 import com.liziczh.archetype.api.utils.AESUtils;
 import com.liziczh.archetype.mybatisplus.mapper.TAppInfoMapper;
@@ -20,11 +22,17 @@ public class AESServiceImpl implements AESService {
 	private TAppInfoMapper tAppInfoMapper;
 
 	@Override
-	public String aesEncrypt(String data, String aesKey) {
-		return AESUtils.aesEncrypt(data, aesKey);
+	public String aesEncrypt(String from, String appKey, String sourceData) {
+		QueryWrapper<TAppInfo> queryWrapper = new QueryWrapper<>();
+		queryWrapper.lambda().eq(TAppInfo::getAppCode, from).eq(TAppInfo::getAppKey, appKey);
+		TAppInfo appInfo = tAppInfoMapper.selectOne(queryWrapper);
+		return AESUtils.aesEncrypt(sourceData, appInfo.getAesKey());
 	}
 	@Override
-	public String aesDecrypt(String data, String aesKey) {
-		return AESUtils.aesDecrypt(data, aesKey);
+	public String aesDecrypt(String from, String appKey, String encryptedData) {
+		QueryWrapper<TAppInfo> queryWrapper = new QueryWrapper<>();
+		queryWrapper.lambda().eq(TAppInfo::getAppCode, from).eq(TAppInfo::getAppKey, appKey);
+		TAppInfo appInfo = tAppInfoMapper.selectOne(queryWrapper);
+		return AESUtils.aesDecrypt(encryptedData, appInfo.getAesKey());
 	}
 }

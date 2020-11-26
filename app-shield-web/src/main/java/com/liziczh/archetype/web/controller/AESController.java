@@ -21,14 +21,14 @@ public class AESController extends BaseController {
 
 	@ApiOperation(value = "AES加密", notes = "AES加密")
 	@PostMapping(value = "encrypt")
-	public Response<String> encrypt(String data, String aesKey) {
-		String result = aesService.aesEncrypt(data, aesKey);
+	public Response<String> encrypt(String from, String appKey, String sourceData) {
+		String result = aesService.aesEncrypt(from, appKey, sourceData);
 		return new Response<String>().complete(result);
 	}
 	@ApiOperation(value = "AES解密", notes = "AES解密")
 	@PostMapping(value = "decrypt")
-	public Response<String> decrypt(String data, String aesKey) {
-		String result = aesService.aesDecrypt(data, aesKey);
+	public Response<String> decrypt(String from, String appKey, String encryptedData) {
+		String result = aesService.aesDecrypt(from, appKey, encryptedData);
 		return new Response<String>().complete(result);
 	}
 }
