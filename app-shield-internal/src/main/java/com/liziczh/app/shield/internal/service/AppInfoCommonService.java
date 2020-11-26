@@ -4,9 +4,10 @@ import com.liziczh.app.shield.api.entity.TAppInfo;
 
 public interface AppInfoCommonService {
 	/**
-	 * @param from
-	 * @param appKey
-	 * @return
+	 * 根据from&appKey查询AppInfo
+	 * @param from 请求来源
+	 * @param appKey app key
+	 * @return AppInfo
 	 */
-	TAppInfo getAppInfoByFromAndAppKey(String from, String appKey);
+	TAppInfo getAppInfo(String from, String appKey);
 }

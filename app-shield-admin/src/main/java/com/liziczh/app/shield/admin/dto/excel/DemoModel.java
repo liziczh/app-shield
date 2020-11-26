@@ -8,7 +8,7 @@ import com.alibaba.excel.annotation.write.style.ColumnWidth;
 import lombok.Data;
 
 /**
- * 对接百度健康订单信息
+ * ExcelModel
  * @author zhehao.chen
  */
 @Data

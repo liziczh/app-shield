@@ -24,12 +24,12 @@ public class SignServiceImpl implements SignService {
 
 	@Override
 	public String generateSign(String from, String appKey, Map<String, Object> paramMap) {
-		TAppInfo appInfo = appInfoCommonService.getAppInfoByFromAndAppKey(from, appKey);
+		TAppInfo appInfo = appInfoCommonService.getAppInfo(from, appKey);
 		return SignUtils.generateSign(paramMap, appInfo.getAppSecret());
 	}
 	@Override
 	public Boolean checkSign(String from, String appKey, Map<String, Object> paramMap, String sign) {
-		TAppInfo appInfo = appInfoCommonService.getAppInfoByFromAndAppKey(from, appKey);
+		TAppInfo appInfo = appInfoCommonService.getAppInfo(from, appKey);
 		return SignUtils.checkSign(paramMap, appInfo.getAppSecret(), sign);
 	}
 }

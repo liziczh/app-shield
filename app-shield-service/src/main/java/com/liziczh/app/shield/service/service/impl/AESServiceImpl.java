@@ -22,12 +22,12 @@ public class AESServiceImpl implements AESService {
 
 	@Override
 	public String aesEncrypt(String from, String appKey, String sourceData) {
-		TAppInfo appInfo = appInfoCommonService.getAppInfoByFromAndAppKey(from, appKey);
+		TAppInfo appInfo = appInfoCommonService.getAppInfo(from, appKey);
 		return AESUtils.aesEncrypt(sourceData, appInfo.getAesKey());
 	}
 	@Override
 	public String aesDecrypt(String from, String appKey, String encryptedData) {
-		TAppInfo appInfo = appInfoCommonService.getAppInfoByFromAndAppKey(from, appKey);
+		TAppInfo appInfo = appInfoCommonService.getAppInfo(from, appKey);
 		return AESUtils.aesDecrypt(encryptedData, appInfo.getAesKey());
 	}
 }
