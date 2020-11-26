@@ -4,7 +4,9 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.liziczh.app.shield.api.service.SignService;
@@ -26,13 +28,13 @@ public class SignController extends BaseController {
 
 	@ApiOperation(value = "生成数字签名", notes = "生成数字签名")
 	@PostMapping(value = "create")
-	public Response<String> create(String from, String appKey, Map<String, Object> paramMap) {
+	public Response<String> create(@RequestParam String from, @RequestParam String appKey, @RequestBody Map<String, Object> paramMap) {
 		String sign = signService.generateSign(from, appKey, paramMap);
 		return new Response<String>().complete(sign);
 	}
 	@ApiOperation(value = "校验数字签名", notes = "校验数字签名")
 	@PostMapping(value = "check")
-	public Response<String> check(String from, String appKey, Map<String, Object> paramMap, String sign) {
+	public Response<String> check(@RequestParam String from, @RequestParam String appKey, @RequestBody Map<String, Object> paramMap, @RequestBody String sign) {
 		Boolean result = signService.checkSign(from, appKey, paramMap, sign);
 		return new Response<String>().complete(String.valueOf(result));
 	}
