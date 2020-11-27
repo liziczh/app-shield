@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.liziczh.app.shield.api.dto.aes.AESParam;
 import com.liziczh.app.shield.api.service.AESService;
 import com.liziczh.base.common.controller.BaseController;
 import com.liziczh.base.common.response.Response;
@@ -23,14 +23,14 @@ public class AESController extends BaseController {
 
 	@ApiOperation(value = "AES加密", notes = "AES加密")
 	@PostMapping(value = "encrypt")
-	public Response<String> encrypt(@RequestParam String from, @RequestParam String appKey, @RequestBody String sourceData) {
-		String result = aesService.aesEncrypt(from, appKey, sourceData);
+	public Response<String> encrypt(@RequestBody AESParam param) {
+		String result = aesService.aesEncrypt(param.getFrom(), param.getAppKey(), param.getData());
 		return new Response<String>().complete(result);
 	}
 	@ApiOperation(value = "AES解密", notes = "AES解密")
 	@PostMapping(value = "decrypt")
-	public Response<String> decrypt(@RequestParam String from, @RequestParam String appKey, @RequestBody String encryptedData) {
-		String result = aesService.aesDecrypt(from, appKey, encryptedData);
+	public Response<String> decrypt(@RequestBody AESParam param) {
+		String result = aesService.aesDecrypt(param.getFrom(), param.getAppKey(), param.getData());
 		return new Response<String>().complete(result);
 	}
 }
