@@ -1,14 +1,13 @@
 package com.liziczh.app.shield.web.controller;
 
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.liziczh.app.shield.api.dto.sign.SignCheckParam;
+import com.liziczh.app.shield.api.dto.sign.SignCreateParam;
 import com.liziczh.app.shield.api.service.SignService;
 import com.liziczh.base.common.controller.BaseController;
 import com.liziczh.base.common.response.Response;
@@ -28,14 +27,14 @@ public class SignController extends BaseController {
 
 	@ApiOperation(value = "生成数字签名", notes = "生成数字签名")
 	@PostMapping(value = "create")
-	public Response<String> create(@RequestParam String from, @RequestParam String appKey, @RequestBody Map<String, Object> paramMap) {
-		String sign = signService.generateSign(from, appKey, paramMap);
+	public Response<String> create(@RequestBody SignCreateParam param) {
+		String sign = signService.generateSign(param.getFrom(), param.getAppKey(), param.getParamMap());
 		return new Response<String>().complete(sign);
 	}
 	@ApiOperation(value = "校验数字签名", notes = "校验数字签名")
 	@PostMapping(value = "check")
-	public Response<String> check(@RequestParam String from, @RequestParam String appKey, @RequestBody Map<String, Object> paramMap, @RequestBody String sign) {
-		Boolean result = signService.checkSign(from, appKey, paramMap, sign);
+	public Response<String> check(@RequestBody SignCheckParam param) {
+		Boolean result = signService.checkSign(param.getFrom(), param.getAppKey(), param.getParamMap(), param.getSign());
 		return new Response<String>().complete(String.valueOf(result));
 	}
 }
