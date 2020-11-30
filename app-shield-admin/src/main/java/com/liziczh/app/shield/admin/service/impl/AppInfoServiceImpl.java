@@ -8,54 +8,54 @@ import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.liziczh.app.shield.admin.service.DemoMgmService;
+import com.liziczh.app.shield.admin.service.AppInfoService;
 import com.liziczh.app.shield.api.common.Constants;
-import com.liziczh.app.shield.api.condition.DemoCondition;
-import com.liziczh.app.shield.api.entity.TDemo;
-import com.liziczh.app.shield.mybatisplus.mapper.TDemoMapper;
+import com.liziczh.app.shield.api.condition.AppInfoCondition;
+import com.liziczh.app.shield.api.entity.TAppInfo;
+import com.liziczh.app.shield.mybatisplus.mapper.TAppInfoMapper;
 import com.liziczh.base.common.condition.PageCondition;
 import com.liziczh.base.common.condition.SortCondition;
 
 @Service
-public class DemoMgmServiceImpl implements DemoMgmService {
+public class AppInfoServiceImpl implements AppInfoService {
 	@Autowired
-	private TDemoMapper demoMapper;
+	private TAppInfoMapper tAppInfoMapper;
 
 	@Override
-	public List<TDemo> selectByCondition(DemoCondition condition) {
+	public List<TAppInfo> selectByCondition(AppInfoCondition condition) {
 		PageCondition pageCondition = condition.getPageCondition();
 		List<SortCondition> sortConditionList = condition.getSortConditionList();
-		QueryWrapper<TDemo> queryWrapper = new QueryWrapper<>();
-		queryWrapper.lambda().like(TDemo::getName, condition.getName()).lt(TDemo::getCreateTime, new Date()).eq(TDemo::getValid, Constants.COMMON_STATUS.VALID.getCode());
+		QueryWrapper<TAppInfo> queryWrapper = new QueryWrapper<>();
+		queryWrapper.lambda().eq(TAppInfo::getAppCode, condition.getAppCode()).lt(TAppInfo::getCreateTime, new Date()).eq(TAppInfo::getValid, Constants.COMMON_STATUS.VALID.getCode());
 		for (SortCondition sortCondition : sortConditionList) {
 			queryWrapper.orderByDesc(sortCondition.getColumnName());
 		}
-		Page<TDemo> demoPage = demoMapper.selectPage(new Page<>(pageCondition.getPageNum(), pageCondition.getPageSize()), queryWrapper);
+		Page<TAppInfo> demoPage = tAppInfoMapper.selectPage(new Page<>(pageCondition.getPageNum(), pageCondition.getPageSize()), queryWrapper);
 		return demoPage.getRecords();
 	}
 	@Override
-	public List<TDemo> getAll() {
-		return demoMapper.selectList(new QueryWrapper<>());
+	public List<TAppInfo> getAll() {
+		return tAppInfoMapper.selectList(new QueryWrapper<>());
 	}
 	@Override
-	public void addItem(TDemo entity) {
+	public void addItem(TAppInfo entity) {
 		entity.setCreateTime(new Date());
 		entity.setCreateUser(Constants.SYS_USER);
 		entity.setValid(Constants.COMMON_STATUS.VALID.getCode());
-		demoMapper.insert(entity);
+		tAppInfoMapper.insert(entity);
 	}
 	@Override
-	public void updateItem(TDemo entity) {
+	public void updateItem(TAppInfo entity) {
 		entity.setUpdateTime(new Date());
 		entity.setUpdateUser(Constants.SYS_USER);
-		demoMapper.updateById(entity);
+		tAppInfoMapper.updateById(entity);
 	}
 	@Override
-	public TDemo get(Integer id) {
-		return demoMapper.selectById(id);
+	public TAppInfo get(Integer id) {
+		return tAppInfoMapper.selectById(id);
 	}
 	@Override
 	public void delete(Integer id) {
-		demoMapper.deleteById(id);
+		tAppInfoMapper.deleteById(id);
 	}
 }
