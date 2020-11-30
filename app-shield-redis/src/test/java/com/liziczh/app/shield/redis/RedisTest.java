@@ -11,8 +11,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.liziczh.app.shield.redis.service.DemoRedisService;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringJUnitConfig(classes = RedisApplication.class)
 @SpringBootTest
@@ -20,8 +18,6 @@ import com.liziczh.app.shield.redis.service.DemoRedisService;
 public class RedisTest {
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
-	@Autowired
-	private DemoRedisService demoRedisService;
 
 	@Test
 	public void StringRedisTemplateSetTest() {

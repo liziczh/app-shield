@@ -10,10 +10,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class RefContextHelper {
-	@Value("${health.username}")
-	private String USERNAME;
-	@Value("${health.password}")
-	private String PASSWORD;
 	@Value("${archetype.web}")
 	private String ARCHETYPE_WEB;
 	private Map<String, String> config = new HashMap<String, String>();
@@ -23,8 +19,6 @@ public class RefContextHelper {
 	}
 	@PostConstruct
 	public void initConfig() {
-		config.put("USERNAME", USERNAME);
-		config.put("PASSWORD", PASSWORD);
 		config.put("ARCHETYPE_WEB.DEMO.HELLO", "http://" + ARCHETYPE_WEB + "/demo/hello");
 	}
 }
