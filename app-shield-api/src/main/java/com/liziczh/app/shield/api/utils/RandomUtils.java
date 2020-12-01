@@ -10,7 +10,8 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class RandomUtils {
-	private static final String LETTER_POOL = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	private static final String LOWERCASE_LETTER_POOL = "abcdefghijklmnopqrstuvwxyz";
+	private static final String CAPITAL_LETTER_POOL = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	private static final String NUMBER_POOL = "0123456789";
 
 	/**
