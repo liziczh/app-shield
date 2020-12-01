@@ -19,11 +19,10 @@ public class RandomUtils {
 	 * @return 随机串
 	 */
 	private String randomString(int size, String charPool) {
-		String allChar = LETTER_POOL + NUMBER_POOL;
 		StringBuilder stringBuilder = new StringBuilder();
 		Random random = new Random();
 		for (int i = 0; i < size; i++) {
-			stringBuilder.append(allChar.charAt(random.nextInt() % allChar.length()));
+			stringBuilder.append(charPool.charAt(random.nextInt() % charPool.length()));
 		}
 		return stringBuilder.toString();
 	}
