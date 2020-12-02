@@ -1,9 +1,9 @@
 server:
   servlet:
-    context-path: /appshieldmgm
+    context-path: /shield-admin
 spring:
   application:
-    name: app-shield-mgm
+    name: app-shield-admin
   profiles:
     include: mybatisplus-${spring.profiles.active},redis-${spring.profiles.active},ref-${spring.profiles.active},internal-${spring.profiles.active},mgm-${spring.profiles.active}
   jackson:

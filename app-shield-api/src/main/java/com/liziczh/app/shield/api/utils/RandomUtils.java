@@ -19,7 +19,7 @@ public class RandomUtils {
 	 * @param size 数量
 	 * @return 随机串
 	 */
-	private String randomString(int size, String charPool) {
+	private String random(int size, String charPool) {
 		StringBuilder stringBuilder = new StringBuilder();
 		Random random = new Random();
 		for (int i = 0; i < size; i++) {
